@@ -1,1 +1,54 @@
-<!doctype html><html lang="hy"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>7 հրաշալիքներ</title><style>body{margin:0;font-family:Arial;background:#101010;color:white;padding:18px}h1{text-align:center;color:#ffd166}.q{background:#1e1e1e;border:1px solid #444;border-radius:14px;padding:14px;margin:14px 0}button{display:block;width:100%;padding:12px;margin:8px 0;border:0;border-radius:10px;background:#333;color:white;font-size:16px}.ok{background:#168a16!important}.bad{background:#b51616!important}#res{text-align:center;font-size:22px;margin:20px;color:#ffd166}.again{background:#d49b22}</style></head><body><h1>7 հրաշալիքներ Quiz</h1><div id="app"></div><div id="res"></div><button class="again" onclick="location.reload()">Նորից սկսել</button><script>let s=0,a=[['7 հրաշալիքներից որն է գտնվում Եգիպտոսում',['ա) Բաբելոնի կախովի այգիները','բ) Պետրա','գ) Գիզայի Մեծ բուրգ'],2],['Որ ծովի ափին է գտնվում Հալիկառնասի դամբարանը',['ա) Սև ծով','բ) Էգեյան ծով','գ) Միջերկրական ծով'],1],['Ում պատվին էր կառուցվել Արտեմիսի տաճարը',['ա) Զևսի','բ) Արտեմիսի','գ) Ապոլոնի'],1],['Որտեղ է գտնվում Ալեքսանդրիայի փարոսը',['ա) Հռոմում','բ) Աթենքում','գ) Ալեքսանդրիայում'],2],['Որ հրաշալիքն էր կառուցվել որպես հսկա աստվածային արձան',['ա) Զևսի արձանը','բ) Ալեքսանդրիայի փարոս','գ) Հալիկառնասի դամբարան'],0]];app.innerHTML=a.map((x,i)=>`<div class=q><h3>${i+1}. ${x[0]}</h3>${x[1].map((b,j)=>`<button onclick="c(this,${i},${j})">${b}</button>`).join('')}</div>`).join('');function c(b,i,j){let p=b.parentNode,bs=p.querySelectorAll('button');bs.forEach((e,k)=>{e.disabled=1;if(k==a[i][2])e.classList.add('ok')});if(j==a[i][2])s++;else b.classList.add('bad');res.innerHTML='Արդյունք՝ '+s+' / '+a.length}</script></body></html>
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>7 հրաշալիքներ Quiz</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#fff;background:radial-gradient(circle at top,#3b2a10 0,#111 40%,#070707 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(120deg,transparent,rgba(255,209,102,.08),transparent);animation:shine 5s infinite linear;pointer-events:none}
+@keyframes shine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.wrap{max-width:900px;margin:auto;padding:24px 14px 40px}
+.hero{text-align:center;padding:28px 16px;border:1px solid rgba(255,209,102,.35);border-radius:24px;background:rgba(0,0,0,.38);box-shadow:0 0 35px rgba(255,174,0,.16);backdrop-filter:blur(8px)}
+h1{margin:0;font-size:clamp(32px,7vw,62px);color:#ffd166;text-shadow:0 0 12px #9b6500,0 0 26px rgba(255,209,102,.4);letter-spacing:1px}
+.subtitle{margin-top:10px;color:#ffe9ad;font-size:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,209,102,.25);border-radius:18px;padding:14px;text-align:center}
+.stat b{color:#ffd166;font-size:24px}
+.q{position:relative;margin:18px 0;padding:18px;background:linear-gradient(180deg,rgba(35,35,35,.92),rgba(15,15,15,.95));border:1px solid rgba(255,209,102,.28);border-radius:22px;box-shadow:0 14px 35px rgba(0,0,0,.45);animation:pop .55s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(25px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.num{position:absolute;top:-13px;left:16px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#111;border:2px solid #ffd166;color:#ffd166;font-weight:bold;box-shadow:0 0 15px rgba(255,209,102,.35)}
+h3{margin:12px 0 14px;line-height:1.35;font-size:19px}
+button{width:100%;border:0;margin:10px 0;padding:14px 16px;border-radius:14px;background:linear-gradient(180deg,#363636,#242424);color:white;font-size:16px;text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.12);transition:.25s}
+button:hover:not(:disabled){transform:translateY(-2px);background:linear-gradient(180deg,#4a3b1b,#2b2618);box-shadow:0 8px 20px rgba(255,209,102,.15)}
+button:disabled{cursor:default}.ok{background:linear-gradient(180deg,#22a447,#0d6b25)!important;box-shadow:0 0 22px rgba(0,255,90,.35)!important;border-color:#80ff9b!important}.bad{background:linear-gradient(180deg,#d43131,#7e1010)!important;box-shadow:0 0 22px rgba(255,0,0,.35)!important;border-color:#ff8a8a!important}
+#res{margin:24px 0;padding:22px;text-align:center;font-size:24px;color:#ffd166;border:1px solid rgba(255,209,102,.35);border-radius:22px;background:rgba(0,0,0,.42);min-height:72px}
+.again{text-align:center;background:linear-gradient(180deg,#ffd166,#b87905);color:#1b1200;font-weight:bold;border:0;box-shadow:0 10px 25px rgba(255,209,102,.22)}
+.confetti{position:fixed;top:-20px;width:10px;height:18px;background:#ffd166;animation:fall 1.7s linear forwards;z-index:5}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+@media(max-width:600px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><h1>7 հրաշալիքներ</h1><div class="subtitle">Ընտրիր ճիշտ պատասխանը և ստուգիր արդյունքը</div></div>
+<div class="stats"><div class="stat">Հարցեր<br><b id="total">5</b></div><div class="stat">Ճիշտ<br><b id="score">0</b></div><div class="stat">Պատասխանված<br><b id="done">0</b></div></div>
+<div id="app"></div><div id="res">Սկսիր պատասխանել հարցերին</div><button class="again" onclick="location.reload()">🔄 Նորից սկսել</button>
+</div>
+<script>
+let s=0,d=0;
+let a=[
+['7 հրաշալիքներից որն է գտնվում Եգիպտոսում',['ա) Բաբելոնի կախովի այգիները','բ) Պետրա','գ) Գիզայի Մեծ բուրգ'],2],
+['Որ ծովի ափին է գտնվում Հալիկառնասի դամբարանը',['ա) Սև ծով','բ) Էգեյան ծով','գ) Միջերկրական ծով'],1],
+['Ում պատվին էր կառուցվել Արտեմիսի տաճարը',['ա) Զևսի','բ) Արտեմիսի','գ) Ապոլոնի'],1],
+['Որտեղ է գտնվում Ալեքսանդրիայի փարոսը',['ա) Հռոմում','բ) Աթենքում','գ) Ալեքսանդրիայում'],2],
+['Որ հրաշալիքն էր կառուցվել որպես հսկա աստվածային արձան',['ա) Զևսի արձանը','բ) Ալեքսանդրիայի փարոս','գ) Հալիկառնասի դամբարան'],0]
+];
+total.textContent=a.length;
+app.innerHTML=a.map((x,i)=>`<div class="q" style="animation-delay:${i*.08}s"><div class="num">${i+1}</div><h3>${x[0]}</h3>${x[1].map((b,j)=>`<button onclick="c(this,${i},${j})">${b}</button>`).join('')}</div>`).join('');
+function c(b,i,j){let p=b.parentNode,bs=p.querySelectorAll('button');bs.forEach((e,k)=>{e.disabled=1;if(k==a[i][2])e.classList.add('ok')});d++;if(j==a[i][2]){s++;burst()}else{b.classList.add('bad')}score.textContent=s;done.textContent=d;if(d<a.length){res.innerHTML='Արդյունք՝ '+s+' / '+a.length}else{let text=s==a.length?'Գերազանց 🏆':s>=3?'Լավ արդյունք ⭐':'Փորձիր նորից 💪';res.innerHTML=text+'<br>Վերջնական արդյունք՝ '+s+' / '+a.length;if(s==a.length)for(let i=0;i<25;i++)setTimeout(burst,i*70)}}
+function burst(){for(let i=0;i<12;i++){let e=document.createElement('div');e.className='confetti';e.style.left=Math.random()*100+'vw';e.style.background=['#ffd166','#06d6a0','#ef476f','#118ab2','#ffffff'][Math.floor(Math.random()*5)];e.style.animationDuration=(1+Math.random()*1.2)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}}
+</script>
+</body>
+</html>
